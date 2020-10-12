@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Blog scemo su cose sceme</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="styleD.css">
+    </head>
+    
+    <body>
+        <nav>
+            <div id="navbar" class="container">
+                <div class="row justify-content-between">
+                    <p id="nome_sito" class="col-3 text-nowrap"> Blog scemo con<br>notizie sceme</p>
+                </div>
+
+            </div>
+        </nav>
+
+        <p id="num_articles" >Liste: <span id="n_of_elements" class="badge badge-secondary"></span></p>
+
+        <article>
+            <div id="bacheca" class="row justify-content-between" style="margin-left: 2%; margin-right: 2%;">
+                
+                <div id="Div_bottone" class="col-4" style="min-height: 139px;">
+                    <button style="width: 100%; height: 100%;" onclick="Create_Card()">+</button>
+                </div>
+                <div id="elemento_vuoto" class="col-4"></div>
+            
+            
+            
+            </div>
+        </article>
+
+
+        
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script>
+            jQuery(document).ready(function(){
+                var numItems = $('.card').length;
+                $('#n_of_elements').html(numItems);
+            })
+        </script>
+        <script> function aggiungi(int){
+            var daAggiungere = $("#Card" + int +" .form-control").val();
+            if(daAggiungere == ""){
+
+            }else{
+                var numeroElementiLista_plus1 = $("#Card" + int +" li").length + 1;
+                var nuovoElemento = $('<li class="list-group-item row"><div class="col-1 float-left align-middle" style="margin: 0; padding: 0; height: 100%;"><input id="c' +int + '_' + numeroElementiLista_plus1 + '1" type="checkbox" aria-label="Checkbox for following text input"></div><div class="col-10 float-right" style="padding-right: 0;"><p class="align-middle mb-0">' + daAggiungere + '</p></div></li>')
+                nuovoElemento.appendTo("#Card" + int +" ul");
+                $("#Card" + int +" .form-control").val("");
+            }
+        }
+        </script>
+        <script> function Create_Card(){
+            var bottoneDiv =$("#Div_bottone");
+            var spazioVuoto =$("#elemento_vuoto");
+            var numItems = $('.card').length + 1;
+            var i;
+            var num_id;
+            for(i=0;i<=numItems; i++){
+                if($("#Card" + i).length == 0){
+                    num_id = i;
+                    break
+                }
+            }
+            var nuovaCarta =$('<div id="Card_Div'+ num_id +'" class="col-4 Card_Place"><div id="Card' + num_id + '" class= "card"><button class="rounded-circle X_button" onclick="DeleteCard(' + num_id + ')">X</button><div class="card-body"><div class="card-header text-center">lista' + num_id + '</div><ul class="list-group list-group-flush"></ul><div  class="input-group" style="padding-top: 10px; margin-bottom: 0;"><input type="text" class="form-control" placeholder="cosa aggiungere"><div class="input-group-append"><button class="btn btn-outline-secondary bottoni_input" type="button" id="button-comment' + num_id +'" onclick="aggiungi('+ num_id + ')">ADD</button></div></div></div></div></div>');
+            nuovaCarta.insertBefore(bottoneDiv);
+            $('#n_of_elements').html(numItems);
+
+        }
+        </script>
+        <script> function DeleteCard(int){
+            $("#Card" + int).remove();
+        }
+
+        </script>
+
+
+    </body>
+</html>

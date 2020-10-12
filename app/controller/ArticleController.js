@@ -18,7 +18,7 @@ class ArticleController{
 
         
         this.url_output = "http://localhost:3000/tasks";
-        this.url_get= "https://texty-89895.firebaseio.com/posts.json";
+        this.url_get= "http://localhost:3000/tasks";
         
     
 

@@ -5,12 +5,12 @@ var mongoose = require('mongoose'),
   Task = mongoose.model('Tasks');
 
 exports.list_all_tasks = function(req, res) {
-  Task.find( {public:{ $not: /false/}}, function(err, task) {
+  Task.find( {public: true}, function(err, task) {
     if(Array.isArray(task)){
       task.sort(function(a,b){
         if(a.featured == true && b.featured == false){
             return -1;
-        }else if(a.priority == false && b.priority == true){
+        }else if(a.featured == false && b.featured == true){
           return 1;
         }else{
           return 0;

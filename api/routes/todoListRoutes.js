@@ -7,9 +7,6 @@ module.exports = function(app) {
     .get(todoList.list_all_tasks)
     .post(todoList.create_a_task);
 
-
-  app.route('/tasks/status-completed')
-    .get(todoList.list_completed_tasks);
     
   app.route('/tasks/:taskId')
     .get(todoList.read_a_task)

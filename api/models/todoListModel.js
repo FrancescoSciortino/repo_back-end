@@ -23,8 +23,8 @@ var TaskSchema = new Schema({
     type: Boolean
   },
   Ttags:{
-    type: String,
-    default: 'ALL'
+    type: Array,
+    default: ['ALL']
   }
 
 });
