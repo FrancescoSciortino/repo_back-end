@@ -19,7 +19,6 @@ exports.list_all_tasks = function(req, res) {
     }
     if (err)
       res.send(err);
-    console.log("List_all_task",task);
     res.json(task);
   });
 };
@@ -28,11 +27,13 @@ exports.list_all_tasks = function(req, res) {
 
 
 exports.create_a_task = function(req, res) {
+  console.log("req-body",req.body)
   var new_task = new Task(req.body);
   new_task.save(function(err, task) {
     if (err)
       res.send(err);
     res.json(task);
+  
   });
 };
 
@@ -51,7 +52,6 @@ exports.update_a_task = function(req, res) {
     if (err)
       res.send(err);
     res.json(task);
-    console.log(req.body);
   });
 };
 exports.patch_a_task = function(req, res) {

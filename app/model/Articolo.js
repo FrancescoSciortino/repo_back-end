@@ -4,7 +4,13 @@ class Articolo{
         this.id = "temp";
         this.testo = testo;
         this.titolo = titolo;
+        if(this.titolo == ""){
+                this.titolo = "Senza Titolo";
+        }
         this.autore = autore;
+        if(this.autore == ""){
+                this.autore = "Anonimo";
+        }
         this.featured = false;
         this.piace = false;
         this.tag = [];

@@ -68,7 +68,7 @@
               </button>
             </div>
             <div class="modal-body">
-                <input id="ID_Articolo" type="text" class="form-control" placeholder="ID Articolo">
+                <input id="modal_ID_Articolo" type="text" class="form-control" placeholder="ID Articolo">
                 <input id="user_in_modal" type="text" class="form-control" placeholder="Nome autore">
                 <input id="categoria_in_modal" type="text" class="form-control" placeholder="Categoria">
                 <input id="title_in_modal" type="text" class="form-control" placeholder="Titolo">
@@ -83,9 +83,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="controllore.delete_article_byID_from_server($('#ID_Articolo').val())">Elimina articolo per ID</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="controllore.delete_article_byID_from_server($('#modal_ID_Articolo').val())">Elimina articolo per ID</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="controllore.clean_modal()">Esci senza salvare</button>
-              <button type="button" class="btn btn-primary" onclick="controllore.Create_article_with_modal('#text_in_modal','#user_in_modal','#categoria_in_modal','#title_in_modal','#modal_check_featured','#modal_check_Public','#ID_Articolo')">Pubblica</button>
+              <button type="button" class="btn btn-primary" onclick="controllore.Create_article_with_modal('#text_in_modal','#user_in_modal','#categoria_in_modal','#title_in_modal','#modal_check_featured','#modal_check_Public','#modal_ID_Articolo')">Pubblica</button>
             </div>
           </div>
         </div>

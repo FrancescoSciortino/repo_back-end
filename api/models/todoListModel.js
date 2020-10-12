@@ -7,24 +7,31 @@ var Schema = mongoose.Schema;
 var TaskSchema = new Schema({
   title: {
     type: String,
-    required: 'Kindly enter the Title of the article'
+    default: 'Senza Titolo'
   },
   Created_date: {
     type: Date,
     default: Date.now
   },
   body: {
-    type: String
+    type: String,
+    required: 'Non puoi pubblicare un articolo senza testo'
   },
   public:{
-    type: Boolean
+    type: Boolean,
+    default: true
   },
   featured: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   Ttags:{
     type: Array,
     default: ['ALL']
+  },
+  autore:{
+    type: String,
+    default: 'Anonimo'
   }
 
 });

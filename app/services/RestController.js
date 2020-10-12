@@ -18,7 +18,7 @@ class RestController{
     post(url,data,onSuccess,onError){
         $.post({
             url: url,
-            data:JSON.stringify(data),
+            data: data,
             success: onSuccess
           });
 
@@ -27,18 +27,18 @@ class RestController{
 
     update(url,id,dato,onSuccess,onError){
         var that = this;
-        var url_changed = url.replace(".json", "/" + id + ".json");
+        var url_changed = url+ "/" + id;
         $.ajax({
             url: url_changed,
             type: "PUT",
-            data: JSON.stringify(dato),
+            data: dato,
             success: onSuccess
         });
         
     }
     delete(url,id,onSuccess,onError){
         var that = this;
-        var url_changed = url.replace(".json", "/" + id + ".json");
+        var url_changed = url+ "/" + id;
         $.ajax({
             url: url_changed,
             type: "DELETE",
