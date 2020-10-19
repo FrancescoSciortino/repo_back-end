@@ -70,9 +70,8 @@ var CommentSchema = new Schema({
   }
 
 });
-/*
 
-var UserSchema = new mongoose.Schema({
+var UserSchema = new Schema({
   email: {
     type: String,
     unique: true,
@@ -88,13 +87,9 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  },
-  passwordConf: {
-    type: String,
-    required: true,
   }
 });
-
+/*
 UserSchema.pre('save', function (next) {
   var user = this;
   bcrypt.hash(user.password, 10, function (err, hash){
@@ -125,10 +120,9 @@ UserSchema.statics.authenticate = function (email, password, callback) {
       })
     });
 }
-
+*/
 
 module.exports = mongoose.model('Users', UserSchema);
-*/
 
 module.exports = mongoose.model('Articles', ArticleSchema);
 module.exports = mongoose.model('Comments', CommentSchema);

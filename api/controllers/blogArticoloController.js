@@ -2,9 +2,9 @@
 
 
 var mongoose = require('mongoose'),
-  Article = mongoose.model('Articles');
-  Comment = mongoose.model('Comments');
-  User = mongoose.model('User');
+  Article = mongoose.model('Articles'),
+  Comment = mongoose.model('Comments'),
+  User = mongoose.model('Users');
 
 exports.list_all_articles = function(req, res) {
   Article.find( {public: true}, function(err, article) {
@@ -152,6 +152,8 @@ exports.delete_a_comment = function(req, res) {
     res.json({ message: 'Commento rimosso con successo' });
   });
 };
+
+
 
 /*User
 exports.create_a_user = function(req,res){
