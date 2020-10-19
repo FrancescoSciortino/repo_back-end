@@ -29,7 +29,6 @@ exports.list_all_articles = function(req, res) {
 
 
 exports.create_an_article = function(req, res) {
-  console.log("req-body",req.body)
   var new_article = new Article(req.body);
   new_article.save(function(err, article) {
     if (err)
@@ -108,13 +107,25 @@ exports.list_all_comments = function(req, res) {
 
 exports.create_a_comment = function(req, res) {
   console.log("req-body",req.body)
-  var new_comment = new Comment(req.body);
-  new_comment.save(function(err, comment) {
-    if (err)
-      res.send(err);
-    res.json(comment);
+  var bool = false;
   
-  });
+  Article.findById(req.body.id_articolo, function(err, article) {
+      
+    if(article != null){
+      var new_comment = new Comment(req.body);
+      new_comment.save(function(err, comment) {
+        if (err)
+          res.send(err);
+        res.json(comment);
+      
+        });
+    }else{
+      res.send("Errore: L'id articolo non corrisponde a nessun articolo salvato");
+    }
+    if(err){
+      res.send(err);
+    }
+  })
 };
 
 
