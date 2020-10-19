@@ -164,29 +164,45 @@ exports.delete_a_comment = function(req, res) {
   });
 };
 
+/* users
+
+exports.list_all_users = function(req, res) {
+  var query = req.query;
+  User.find( query, function(err, user) {
+    if (err)
+      res.send(err);
+    res.json(user);
+  });
+};
 
 
-/*User
 exports.create_a_user = function(req,res){
-  if (req.body.email && req.body.username && req.body.password && req.body.passwordConf) {
-  
-    var userData = {
-      email: req.body.email,
-      username: req.body.username,
-      password: req.body.password,
-      passwordConf: req.body.passwordConf,
-    }
+    
+    bcrypt.hash(req.body.password, 10, function (err, hash){
+      if (err) {
+        return next(err);
+      }
+      req.body.password = hash;
+      next();
+    })
   
     //use schema.create to insert data into the db
-    User.create(userData, function (err, user) {
+    User.create(req.body, function (err, user) {
       if (err) {
         return next(err)
       } else {
         return res.redirect('/profile');
       }
     });
+
+
   }
-
-
-}
+  
+exports.read_a_user = function(req, res) {
+  User.find({username: req.params.userId}, function(err, comment) {
+    if (err)
+      res.send(err);
+    res.json(comment);
+  });
+};
 */

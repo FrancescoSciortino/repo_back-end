@@ -30,7 +30,7 @@ var ArticleSchema = new Schema({
     default: false
   },
   Ttags:{
-    type: Array,
+    type: [String],
     default: ['ALL']
   },
   autore:{
