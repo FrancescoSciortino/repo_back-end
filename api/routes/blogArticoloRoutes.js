@@ -32,14 +32,13 @@ module.exports = function(app) {
 
 
 
-/*
+
   app.route('/users')
   .get(blogArticolo.list_all_users)
   .post(blogArticolo.create_a_user);
 
   app.route('/users/:userId')
     .get(blogArticolo.read_a_user);
-*/
 
 };
 

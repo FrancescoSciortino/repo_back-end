@@ -1,5 +1,5 @@
 'use strict';
-
+const bcrypt = require('bcrypt');
 
 var mongoose = require('mongoose'),
   Article = mongoose.model('Articles'),
@@ -106,7 +106,6 @@ exports.list_all_comments = function(req, res) {
 };
 
 exports.create_a_comment = function(req, res) {
-  console.log("req-body",req.body)
   var bool = false;
   
   Article.findById(req.body.id_articolo, function(err, article) {
@@ -164,15 +163,28 @@ exports.delete_a_comment = function(req, res) {
   });
 };
 
-/* users
 
 exports.list_all_users = function(req, res) {
   var query = req.query;
-  User.find( query, function(err, user) {
-    if (err)
-      res.send(err);
-    res.json(user);
-  });
+  if(query.password && query.username){
+    
+    User.findOne( {username: query.username}, function(err, user) {
+      
+      if (err)
+        res.send(err);
+      bcrypt.compare(query.password, user.password, function(err, result){
+        if(err)
+          res.send(err);
+        if(result){
+          res.json(user);
+        }else{
+          res.send("password errata");
+        }
+      })
+    });
+  }else{
+    res.send("Errore: inserire sia password che username");
+  }
 };
 
 
@@ -180,20 +192,26 @@ exports.create_a_user = function(req,res){
     
     bcrypt.hash(req.body.password, 10, function (err, hash){
       if (err) {
-        return next(err);
+        return res.send(err);
       }
       req.body.password = hash;
-      next();
+      var new_user = new User(req.body);
+      new_user.save(function(err, user) {
+        if (err)
+          res.send(err);
+        res.json(user);
+      
+      });
     })
   
-    //use schema.create to insert data into the db
+    /*use schema.create to insert data into the db
     User.create(req.body, function (err, user) {
       if (err) {
         return next(err)
       } else {
         return res.redirect('/profile');
       }
-    });
+    });*/
 
 
   }
@@ -205,4 +223,3 @@ exports.read_a_user = function(req, res) {
     res.json(comment);
   });
 };
-*/
