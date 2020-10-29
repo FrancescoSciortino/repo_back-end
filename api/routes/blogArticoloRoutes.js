@@ -34,11 +34,11 @@ module.exports = function(app) {
 
 
   app.route('/users')
-  .get(blogArticolo.list_all_users)
+  .get(blogArticolo.get_user)
   .post(blogArticolo.create_a_user);
 
   app.route('/users/:userId')
-    .get(blogArticolo.read_a_user);
+    .get(blogArticolo.verify_user_exist);
 
 };
 
