@@ -169,7 +169,7 @@ exports.list_all_users = function(req, res) {
   if(query.password && query.username){
     
     User.findOne( {username: query.username}, function(err, user) {
-      
+      if(user){
       if (err)
         res.send(err);
       bcrypt.compare(query.password, user.password, function(err, result){
@@ -181,6 +181,9 @@ exports.list_all_users = function(req, res) {
           res.send("password errata");
         }
       })
+    }else{
+      res.send("username errato o inesistente");
+    }
     });
   }else{
     res.send("Errore: inserire sia password che username");
