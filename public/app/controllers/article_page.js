@@ -30,7 +30,7 @@ class ArticlePageController {
     }
 
     getPost(post) {
-        this.restController.read_a_post("http://localhost:3000/posts" + post._id, function (data, status, xhr) {
+        this.restController.read_a_post("https://blog-articoli.herokuapp.com/articles" + post._id, function (data, status, xhr) {
             console.log("data", data)
 
             createUIArtcle(post)
