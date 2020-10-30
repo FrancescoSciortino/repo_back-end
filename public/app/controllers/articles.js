@@ -97,7 +97,7 @@ class PostController {
         }
         //console.log("ID post", post._id)
 
-        this.restController.updatePost("https://blog-articoli.herokuapp.com//articles/" + post._id, data,
+        this.restController.updatePost("https://blog-articoli.herokuapp.com/articles/" + post._id, data,
             function () {
                 //this.closeModal()
                 //this.resetModal()
@@ -124,7 +124,7 @@ class PostController {
         }
         //console.log("ID post", post._id)
 
-        this.restController.patch("https://blog-articoli.herokuapp.com//articles/" + post._id, data,
+        this.restController.patch("https://blog-articoli.herokuapp.com/articles/" + post._id, data,
             function () {
                 //this.closeModal()
                 //this.resetModal()
@@ -141,7 +141,7 @@ class PostController {
 
     deletePost(post) {
 
-        this.restController.delete("https://blog-articoli.herokuapp.com//articles/" + post._id,
+        this.restController.delete("https://blog-articoli.herokuapp.com/articles/" + post._id,
             function () {
                 location.reload(true)
             }.bind(this)
@@ -151,7 +151,7 @@ class PostController {
     }
 
     getPosts() {
-        this.restController.get("https://blog-articoli.herokuapp.com//articles", function (data, status, xhr) {
+        this.restController.get("https://blog-articoli.herokuapp.com/articles", function (data, status, xhr) {
             console.log("data", data)
             for (var id in data) {
                 var post = data[id]
@@ -183,7 +183,7 @@ class PostController {
 
 
 
-        this.restController.post("https://blog-articoli.herokuapp.com//articles", data, function () {
+        this.restController.post("https://blog-articoli.herokuapp.com/articles", data, function () {
             this.createUIPost(post)
             //console.log(data)
         }.bind(this))
@@ -191,7 +191,7 @@ class PostController {
     }
 
     getPost(post) {
-        this.restController.read_a_post("https://blog-articoli.herokuapp.com//articles" + post._id, function (data, status, xhr) {
+        this.restController.read_a_post("https://blog-articoli.herokuapp.com/articles" + post._id, function (data, status, xhr) {
             console.log("data", data)
 
             createUIArtcle(post)

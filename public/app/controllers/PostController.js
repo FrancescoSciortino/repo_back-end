@@ -124,7 +124,7 @@ class PostController {
     }
 
     showPosts() {
-        this.restController.get("https://blog-articoli.herokuapp.com//articles", function (data, status, xhr) {
+        this.restController.get("https://blog-articoli.herokuapp.com/articles", function (data, status, xhr) {
             for (var id in data) {
                 var post = data[id];
                 if (post.public === true) {
@@ -137,7 +137,7 @@ class PostController {
     updatePost(post) {
         //call the rest controller
 
-        this.restController.updatePost("https://blog-articoli.herokuapp.com//articles/" + post.id,
+        this.restController.updatePost("https://blog-articoli.herokuapp.com/articles/" + post.id,
             function () {
                 this.closeModal();
                 this.resetModal();
