@@ -6,5 +6,4 @@ if (port == null || port == "") {
   }
 
 app.use(express.static(__dirname + '/public'));
-/*window.open("index.html");*/
 app.listen(port);
